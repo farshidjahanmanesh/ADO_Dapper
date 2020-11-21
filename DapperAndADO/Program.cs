@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DapperAndADO.ADOReposities;
+using DapperAndADO.DapperReposities;
 using DapperAndADO.Entities;
 
 namespace DapperAndADO
@@ -12,12 +12,12 @@ namespace DapperAndADO
     {
         static void Main(string[] args)
         {
-            ADOPersonRepository repo = new ADOPersonRepository();
+            DapperPersonRepository repo = new DapperPersonRepository();
             try
             {
                 //for insert data 
-                Person person = new Person("farshid", "jahanmanesh", new DateTime(1998, 10, 10));
-                person.Id=repo.Insert(person);
+                Person person = new Person("dappertest", "dappertest", new DateTime(1998, 10, 10));
+                person.Id = repo.Insert(person);
 
                 // for update 
                 person.Name = "faraz";
@@ -30,10 +30,10 @@ namespace DapperAndADO
                 repo.DeleteBy(person);//delete by entity
 
                 //for get a data
-                Person personValues = repo.GetBy(1);
+                Person personValues = repo.GetBy(9);
 
                 //for get all data
-                IEnumerable<Person> persons= repo.GetAll();
+                IEnumerable<Person> persons = repo.GetAll();
             }
             catch (Exception ex)
             {
